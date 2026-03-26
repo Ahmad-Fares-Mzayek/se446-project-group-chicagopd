@@ -1,0 +1,498 @@
+tanalam@master-node:~$ mapred streaming -files mapper_task3.py,reducer_sum.py -mapper "python3 mapper_task3.py" -reducer "python3 reducer_sum.py" -input /data/chicago_crimes_sample.csv -output /user/tanalam/project/m1/task3_sample
+packageJobJar: [] [/opt/hadoop-3.4.1/share/hadoop/tools/lib/hadoop-streaming-3.4.1.jar] /tmp/streamjob18250072783356417397.jar tmpDir=null
+2026-03-25 23:24:33,365 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at master-node/134.209.172.50:8032
+2026-03-25 23:24:33,655 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at master-node/134.209.172.50:8032
+2026-03-25 23:24:34,097 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/tanalam/.staging/job_1771402826595_0221
+2026-03-25 23:24:35,821 INFO mapred.FileInputFormat: Total input files to process : 1
+2026-03-25 23:24:36,482 INFO mapreduce.JobSubmitter: number of splits:2
+2026-03-25 23:24:37,438 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1771402826595_0221
+2026-03-25 23:24:37,438 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-03-25 23:24:37,726 INFO conf.Configuration: resource-types.xml not found
+2026-03-25 23:24:37,726 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2026-03-25 23:24:37,838 INFO impl.YarnClientImpl: Submitted application application_1771402826595_0221
+2026-03-25 23:24:37,882 INFO mapreduce.Job: The url to track the job: http://master-node:8088/proxy/application_1771402826595_0221/
+2026-03-25 23:24:37,884 INFO mapreduce.Job: Running job: job_1771402826595_0221
+2026-03-25 23:24:53,623 INFO mapreduce.Job: Job job_1771402826595_0221 running in uber mode : false
+2026-03-25 23:24:53,625 INFO mapreduce.Job:  map 0% reduce 0%
+2026-03-25 23:25:15,624 INFO mapreduce.Job:  map 100% reduce 0%
+2026-03-25 23:25:26,573 INFO mapreduce.Job:  map 100% reduce 100%
+2026-03-25 23:25:29,430 INFO mapreduce.Job: Job job_1771402826595_0221 completed successfully
+2026-03-25 23:25:29,687 INFO mapreduce.Job: Counters: 54
+        File System Counters
+                FILE: Number of bytes read=166017
+                FILE: Number of bytes written=1275170
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=2391502
+                HDFS: Number of bytes written=2673
+                HDFS: Number of read operations=11
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=2
+                HDFS: Number of bytes read erasure-coded=0
+        Job Counters 
+                Launched map tasks=2
+                Launched reduce tasks=1
+                Data-local map tasks=2
+                Total time spent by all maps in occupied slots (ms)=74748
+                Total time spent by all reduces in occupied slots (ms)=15546
+                Total time spent by all map tasks (ms)=37374
+                Total time spent by all reduce tasks (ms)=7773
+                Total vcore-milliseconds taken by all map tasks=37374
+                Total vcore-milliseconds taken by all reduce tasks=7773
+                Total megabyte-milliseconds taken by all map tasks=19135488
+                Total megabyte-milliseconds taken by all reduce tasks=3979776
+        Map-Reduce Framework
+                Map input records=10001
+                Map output records=10000
+                Map output bytes=146011
+                Map output materialized bytes=166023
+                Input split bytes=212
+                Combine input records=0
+                Combine output records=0
+                Reduce input groups=116
+                Reduce shuffle bytes=166023
+                Reduce input records=10000
+                Reduce output records=115
+                Spilled Records=20000
+                Shuffled Maps =2
+                Failed Shuffles=0
+                Merged Map outputs=2
+                GC time elapsed (ms)=614
+                CPU time spent (ms)=3240
+                Physical memory (bytes) snapshot=645414912
+                Virtual memory (bytes) snapshot=6560522240
+                Total committed heap usage (bytes)=348123136
+                Peak Map Physical memory (bytes)=250191872
+                Peak Map Virtual memory (bytes)=2186002432
+                Peak Reduce Physical memory (bytes)=146477056
+                Peak Reduce Virtual memory (bytes)=2191335424
+        Shuffle Errors
+                BAD_ID=0
+                CONNECTION=0
+                IO_ERROR=0
+                WRONG_LENGTH=0
+                WRONG_MAP=0
+                WRONG_REDUCE=0
+        File Input Format Counters 
+                Bytes Read=2391290
+        File Output Format Counters 
+                Bytes Written=2673
+2026-03-25 23:25:29,691 INFO streaming.StreamJob: Output directory: /user/tanalam/project/m1/task3_sample
+tanalam@master-node:~$ hdfs dfs -cat /user/tanalam/project/m1/task3_sample/part-*
+"VEHICLE - OTHER RIDE SHARE SERVICE (LYFT       5
+ABANDONED BUILDING      2
+AIRCRAFT        1
+AIRPORT BUILDING NON-TERMINAL - NON-SECURE AREA 2
+AIRPORT EXTERIOR - NON-SECURE AREA      2
+AIRPORT EXTERIOR - SECURE AREA  3
+AIRPORT PARKING LOT     8
+AIRPORT TERMINAL LOWER LEVEL - NON-SECURE AREA  5
+AIRPORT TERMINAL LOWER LEVEL - SECURE AREA      5
+AIRPORT TERMINAL UPPER LEVEL - NON-SECURE AREA  4
+AIRPORT TERMINAL UPPER LEVEL - SECURE AREA      11
+AIRPORT TRANSPORTATION SYSTEM (ATS)     1
+AIRPORT VENDING ESTABLISHMENT   1
+AIRPORT/AIRCRAFT        1
+ALLEY   216
+ANIMAL HOSPITAL 2
+APARTMENT       1868
+APPLIANCE STORE 5
+ATHLETIC CLUB   14
+ATM (AUTOMATIC TELLER MACHINE)  8
+AUTO    2
+AUTO / BOAT / RV DEALERSHIP     9
+BANK    37
+BAR OR TAVERN   84
+BARBERSHOP      5
+BOAT / WATERCRAFT       1
+BRIDGE  2
+BUS     4
+CAR WASH        9
+CEMETARY        2
+CHA APARTMENT   15
+CHA HALLWAY / STAIRWELL / ELEVATOR      7
+CHA PARKING LOT / GROUNDS       17
+CHURCH / SYNAGOGUE / PLACE OF WORSHIP   16
+CLEANING STORE  1
+COIN OPERATED MACHINE   1
+COLLEGE / UNIVERSITY - GROUNDS  3
+COLLEGE / UNIVERSITY - RESIDENCE HALL   2
+COMMERCIAL / BUSINESS OFFICE    121
+CONSTRUCTION SITE       11
+CONVENIENCE STORE       51
+CREDIT UNION    1
+CTA BUS 44
+CTA BUS STOP    16
+CTA PARKING LOT / GARAGE / OTHER PROPERTY       5
+CTA PLATFORM    24
+CTA STATION     22
+CTA TRACKS - RIGHT OF WAY       3
+CTA TRAIN       49
+CURRENCY EXCHANGE       6
+DAY CARE CENTER 6
+DEPARTMENT STORE        134
+DRIVEWAY - RESIDENTIAL  25
+DRUG STORE      46
+FACTORY / MANUFACTURING BUILDING        3
+FEDERAL BUILDING        1
+FISTS   131
+GAS STATION     124
+GAS STATION DRIVE/PROP. 1
+GOVERNMENT BUILDING / PROPERTY  19
+GROCERY FOOD STORE      91
+HALLWAY 1
+HIGHWAY / EXPRESSWAY    3
+HOSPITAL BUILDING / GROUNDS     42
+HOSPITAL BUILDING/GROUNDS       1
+HOTEL / MOTEL   41
+HOTEL/MOTEL     3
+HOUSE   1
+JAIL / LOCK-UP FACILITY 2
+LAKEFRONT / WATERFRONT / RIVERBANK      4
+LIBRARY 6
+MEDICAL / DENTAL OFFICE 11
+MOTOR VEH"      1
+MOTOR VEHICLE"  12
+MOVIE HOUSE / THEATER   5
+NURSING / RETIREMENT HOME       42
+NURSING HOME/RETIREMENT HOME    1
+OTHER   9
+OTHER (SPECIFY) 154
+OTHER COMMERCIAL TRANSPORTATION 5
+OTHER RAILROAD PROPERTY / TRAIN DEPOT   3
+PARK PROPERTY   91
+PARKING LOT / GARAGE (NON RESIDENTIAL)  355
+PARKING LOT/GARAGE(NON.RESID.)  1
+PAWN SHOP       1
+POLICE FACILITY / VEHICLE PARKING LOT   38
+POLICE FACILITY/VEH PARKING LOT 1
+PORCH   2
+RESIDENCE       1344
+RESIDENCE - GARAGE      114
+RESIDENCE - PORCH / HALLWAY     100
+RESIDENCE - YARD (FRONT / BACK) 126
+RESIDENCE PORCH/HALLWAY 1
+RESIDENCE-GARAGE        1
+RESTAURANT      186
+RETAIL STORE    1
+SCHOOL - PRIVATE BUILDING       13
+SCHOOL - PRIVATE GROUNDS        9
+SCHOOL - PUBLIC BUILDING        76
+SCHOOL - PUBLIC GROUNDS 75
+SCOOTER 38
+SIDEWALK        524
+SMALL RETAIL STORE      234
+SPORTS ARENA / STADIUM  13
+STREET  2686
+TAVERN / LIQUOR STORE   17
+TAXICAB 6
+VACANT LOT      1
+VACANT LOT / LAND       30
+VACANT LOT/LAND 2
+VEHICLE - COMMERCIAL    10
+VEHICLE - DELIVERY TRUCK        1
+VEHICLE NON-COMMERCIAL  138
+VESTIBULE       1
+WAREHOUSE       9
+tanalam@master-node:~$ mapred streaming -files mapper_task3.py,reducer_sum.py -mapper "python3 mapper_task3.py" -reducer "python3 reducer_sum.py" -input /data/chicago_crimes.csv -output /user/tanalam/project/m1/task3
+packageJobJar: [] [/opt/hadoop-3.4.1/share/hadoop/tools/lib/hadoop-streaming-3.4.1.jar] /tmp/streamjob1044220015855241344.jar tmpDir=null
+2026-03-25 23:27:07,651 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at master-node/134.209.172.50:8032
+2026-03-25 23:27:07,964 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at master-node/134.209.172.50:8032
+2026-03-25 23:27:08,434 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/tanalam/.staging/job_1771402826595_0222
+2026-03-25 23:27:10,117 INFO mapred.FileInputFormat: Total input files to process : 1
+2026-03-25 23:27:10,156 INFO net.NetworkTopology: Adding a new node: /default-rack/164.92.103.148:9866
+2026-03-25 23:27:10,158 INFO net.NetworkTopology: Adding a new node: /default-rack/146.190.147.119:9866
+2026-03-25 23:27:10,811 INFO mapreduce.JobSubmitter: number of splits:2
+2026-03-25 23:27:11,694 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1771402826595_0222
+2026-03-25 23:27:11,694 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-03-25 23:27:11,969 INFO conf.Configuration: resource-types.xml not found
+2026-03-25 23:27:11,970 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2026-03-25 23:27:12,085 INFO impl.YarnClientImpl: Submitted application application_1771402826595_0222
+2026-03-25 23:27:12,136 INFO mapreduce.Job: The url to track the job: http://master-node:8088/proxy/application_1771402826595_0222/
+2026-03-25 23:27:12,140 INFO mapreduce.Job: Running job: job_1771402826595_0222
+2026-03-25 23:27:31,958 INFO mapreduce.Job: Job job_1771402826595_0222 running in uber mode : false
+2026-03-25 23:27:31,960 INFO mapreduce.Job:  map 0% reduce 0%
+2026-03-25 23:27:59,422 INFO mapreduce.Job:  map 100% reduce 0%
+2026-03-25 23:28:12,795 INFO mapreduce.Job:  map 100% reduce 100%
+2026-03-25 23:28:15,635 INFO mapreduce.Job: Job job_1771402826595_0222 completed successfully
+2026-03-25 23:28:15,855 INFO mapreduce.Job: Counters: 54
+        File System Counters
+                FILE: Number of bytes read=12341707
+                FILE: Number of bytes written=25626505
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=181964998
+                HDFS: Number of bytes written=4749
+                HDFS: Number of read operations=11
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=2
+                HDFS: Number of bytes read erasure-coded=0
+        Job Counters 
+                Launched map tasks=2
+                Launched reduce tasks=1
+                Data-local map tasks=2
+                Total time spent by all maps in occupied slots (ms)=95806
+                Total time spent by all reduces in occupied slots (ms)=21698
+                Total time spent by all map tasks (ms)=47903
+                Total time spent by all reduce tasks (ms)=10849
+                Total vcore-milliseconds taken by all map tasks=47903
+                Total vcore-milliseconds taken by all reduce tasks=10849
+                Total megabyte-milliseconds taken by all map tasks=24526336
+                Total megabyte-milliseconds taken by all reduce tasks=5554688
+        Map-Reduce Framework
+                Map input records=793074
+                Map output records=793072
+                Map output bytes=10755557
+                Map output materialized bytes=12341713
+                Input split bytes=198
+                Combine input records=0
+                Combine output records=0
+                Reduce input groups=217
+                Reduce shuffle bytes=12341713
+                Reduce input records=793072
+                Reduce output records=216
+                Spilled Records=1586144
+                Shuffled Maps =2
+                Failed Shuffles=0
+                Merged Map outputs=2
+                GC time elapsed (ms)=853
+                CPU time spent (ms)=9120
+                Physical memory (bytes) snapshot=676372480
+                Virtual memory (bytes) snapshot=6561677312
+                Total committed heap usage (bytes)=348266496
+                Peak Map Physical memory (bytes)=254320640
+                Peak Map Virtual memory (bytes)=2186047488
+                Peak Reduce Physical memory (bytes)=169357312
+                Peak Reduce Virtual memory (bytes)=2194812928
+        Shuffle Errors
+                BAD_ID=0
+                CONNECTION=0
+                IO_ERROR=0
+                WRONG_LENGTH=0
+                WRONG_MAP=0
+                WRONG_REDUCE=0
+        File Input Format Counters 
+                Bytes Read=181964800
+        File Output Format Counters 
+                Bytes Written=4749
+2026-03-25 23:28:15,856 INFO streaming.StreamJob: Output directory: /user/tanalam/project/m1/task3
+tanalam@master-node:~$ hdfs dfs -cat /user/tanalam/project/m1/task3/part-*
+"CTA ""L"" PLATFORM"    10
+"CTA ""L"" TRAIN"       11
+"SCHOOL 20516
+"VEHICLE - OTHER RIDE SHARE SERVICE (LYFT       37
+ABANDONED BUILDING      829
+AIRCRAFT        34
+AIRPORT BUILDING NON-TERMINAL - NON-SECURE AREA 33
+AIRPORT BUILDING NON-TERMINAL - SECURE AREA     16
+AIRPORT EXTERIOR - NON-SECURE AREA      33
+AIRPORT EXTERIOR - SECURE AREA  20
+AIRPORT PARKING LOT     81
+AIRPORT TERMINAL LOWER LEVEL - NON-SECURE AREA  60
+AIRPORT TERMINAL LOWER LEVEL - SECURE AREA      42
+AIRPORT TERMINAL MEZZANINE - NON-SECURE AREA    4
+AIRPORT TERMINAL UPPER LEVEL - NON-SECURE AREA  41
+AIRPORT TERMINAL UPPER LEVEL - SECURE AREA      133
+AIRPORT TRANSPORTATION SYSTEM (ATS)     12
+AIRPORT VENDING ESTABLISHMENT   7
+AIRPORT/AIRCRAFT        2753
+ALLEY   18258
+ANIMAL HOSPITAL 13
+APARTMENT       60925
+APPLIANCE STORE 269
+ATHLETIC CLUB   465
+ATM (AUTOMATIC TELLER MACHINE)  66
+AUTO    1370
+AUTO / BOAT / RV DEALERSHIP     92
+BANK    3325
+BANQUET HALL    2
+BAR OR TAVERN   3380
+BARBER SHOP/BEAUTY SALON        26
+BARBERSHOP      642
+BASEMENT        34
+BEACH   1
+BOAT / WATERCRAFT       4
+BOAT/WATERCRAFT 66
+BOWLING ALLEY   85
+BRIDGE  28
+BUS     3085
+CAR WASH        363
+CASINO/GAMBLING ESTABLISHMENT   6
+CEMETARY        31
+CHA APARTMENT   8340
+CHA BREEZEWAY   3
+CHA ELEVATOR    3
+CHA GROUNDS     48
+CHA HALLWAY     39
+CHA HALLWAY / STAIRWELL / ELEVATOR      60
+CHA HALLWAY/STAIRWELL/ELEVATOR  4773
+CHA LOBBY       7
+CHA PARKING LOT 57
+CHA PARKING LOT / GROUNDS       166
+CHA PARKING LOT/GROUNDS 11846
+CHA PLAY LOT    4
+CHA STAIRWELL   10
+CHURCH  6
+CHURCH / SYNAGOGUE / PLACE OF WORSHIP   224
+CHURCH PROPERTY 2
+CHURCH/SYNAGOGUE/PLACE OF WORSHIP       1344
+CLEANERS/LAUNDROMAT     1
+CLEANING STORE  786
+CLUB    18
+COACH HOUSE     3
+COIN OPERATED MACHINE   108
+COLLEGE / UNIVERSITY - GROUNDS  43
+COLLEGE / UNIVERSITY - RESIDENCE HALL   12
+COLLEGE/UNIVERSITY GROUNDS      449
+COLLEGE/UNIVERSITY RESIDENCE HALL       87
+COMMERCIAL / BUSINESS OFFICE    8219
+CONSTRUCTION SITE       1206
+CONVENIENCE STORE       610
+COUNTY JAIL     2
+CREDIT UNION    42
+CTA BUS 2147
+CTA BUS STOP    182
+CTA GARAGE / OTHER PROPERTY     10
+CTA PARKING LOT / GARAGE / OTHER PROPERTY       68
+CTA PLATFORM    4938
+CTA PROPERTY    10
+CTA STATION     185
+CTA SUBWAY STATION      2
+CTA TRACKS - RIGHT OF WAY       4
+CTA TRAIN       1932
+CURRENCY EXCHANGE       1277
+DAY CARE CENTER 246
+DELIVERY TRUCK  149
+DEPARTMENT STORE        10818
+DRIVEWAY        27
+DRIVEWAY - RESIDENTIAL  1902
+DRUG STORE      4469
+DUMPSTER        7
+ELEVATOR        2
+EXPRESSWAY EMBANKMENT   1
+FACTORY 2
+FACTORY / MANUFACTURING BUILDING        53
+FACTORY/MANUFACTURING BUILDING  910
+FEDERAL BUILDING        85
+FIRE STATION    125
+FISTS   1157
+FOREST PRESERVE 62
+FUNERAL PARLOR  1
+GANGWAY 73
+GARAGE  73
+GARAGE/AUTO REPAIR      11
+GAS STATION     7703
+GAS STATION DRIVE/PROP. 69
+GOVERNMENT BUILDING     2
+GOVERNMENT BUILDING / PROPERTY  365
+GOVERNMENT BUILDING/PROPERTY    1447
+GROCERY FOOD STORE      13029
+HALLWAY 103
+HIGHWAY / EXPRESSWAY    13
+HIGHWAY/EXPRESSWAY      115
+HOSPITAL        16
+HOSPITAL BUILDING / GROUNDS     552
+HOSPITAL BUILDING/GROUNDS       1962
+HOTEL   27
+HOTEL / MOTEL   513
+HOTEL/MOTEL     3166
+HOUSE   675
+JAIL / LOCK-UP FACILITY 20
+JUNK YARD/GARBAGE DUMP  1
+KENNEL  1
+LAGOON  1
+LAKE    4
+LAKEFRONT / WATERFRONT / RIVERBANK      31
+LAKEFRONT/WATERFRONT/RIVERBANK  66
+LAUNDRY ROOM    2
+LIBRARY 585
+LIQUOR STORE    13
+LIVERY AUTO     1
+LIVERY STAND OFFICE     2
+LOADING DOCK    1
+MEDICAL / DENTAL OFFICE 123
+MEDICAL/DENTAL OFFICE   753
+MOTEL   7
+MOTOR VEH"      757
+MOTOR VEHICLE"  194
+MOVIE HOUSE / THEATER   47
+MOVIE HOUSE/THEATER     297
+NEWSSTAND       32
+NON-MOTOR VEHICLE"      7
+NON-VEH"        89
+NURSING / RETIREMENT HOME       311
+NURSING HOME    6
+NURSING HOME/RETIREMENT HOME    1538
+OFFICE  19
+OTHER   29213
+OTHER (SPECIFY) 1843
+OTHER COMMERCIAL TRANSPORTATION 359
+OTHER RAILROAD PROP / TRAIN DEPOT       586
+OTHER RAILROAD PROPERTY / TRAIN DEPOT   61
+PARK PROPERTY   5745
+PARKING LOT     257
+PARKING LOT / GARAGE (NON RESIDENTIAL)  3340
+PARKING LOT/GARAGE(NON.RESID.)  21876
+PAWN SHOP       10
+POLICE FACILITY 1
+POLICE FACILITY / VEHICLE PARKING LOT   415
+POLICE FACILITY/VEH PARKING LOT 869
+POOL ROOM       40
+POOLROOM        1
+PORCH   398
+PRAIRIE 2
+PUBLIC GRAMMAR SCHOOL   2
+PUBLIC HIGH SCHOOL      2
+RAILROAD PROPERTY       15
+RESIDENCE       136238
+RESIDENCE - GARAGE      1116
+RESIDENCE - PORCH / HALLWAY     1270
+RESIDENCE - YARD (FRONT / BACK) 964
+RESIDENCE PORCH/HALLWAY 12619
+RESIDENCE-GARAGE        14266
+RESIDENTIAL YARD (FRONT/BACK)   44
+RESTAURANT      11996
+RETAIL STORE    99
+RIVER   4
+RIVER BANK      5
+ROOF    1
+ROOMING HOUSE   1
+SAVINGS AND LOAN        48
+SCHOOL - PRIVATE BUILDING       123
+SCHOOL - PRIVATE GROUNDS        148
+SCHOOL - PUBLIC BUILDING        803
+SCHOOL - PUBLIC GROUNDS 759
+SCHOOL YARD     16
+SCOOTER 477
+SEWER   2
+SIDEWALK        47407
+SMALL RETAIL STORE      13755
+SPORTS ARENA / STADIUM  84
+SPORTS ARENA/STADIUM    349
+STAIRWELL       25
+STREET  245437
+TAVERN  37
+TAVERN / LIQUOR STORE   238
+TAVERN/LIQUOR STORE     3764
+TAXI CAB        6
+TAXICAB 701
+TRAILER 4
+TRUCK   9
+TRUCKING TERMINAL       1
+VACANT LOT      135
+VACANT LOT / LAND       346
+VACANT LOT/LAND 1892
+VEHICLE - COMMERCIAL    107
+VEHICLE - COMMERCIAL: ENTERTAINMENT / PARTY BUS 2
+VEHICLE - COMMERCIAL: TROLLEY BUS       1
+VEHICLE - DELIVERY TRUCK        20
+VEHICLE NON-COMMERCIAL  7738
+VEHICLE-COMMERCIAL      435
+VESTIBULE       27
+WAREHOUSE       1286
+WOODED AREA     7
+YARD    311
+YMCA    3
+tanalam@master-node:~$ 
