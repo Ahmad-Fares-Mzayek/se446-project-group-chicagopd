@@ -1,0 +1,6 @@
+pyspark==3.5.4
+numpy
+jupyter
+matplotlib
+nbformat
+pandas
